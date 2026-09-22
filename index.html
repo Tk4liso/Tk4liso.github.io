@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio | Data Science</title>
+
+  <!-- Dependencias de Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Tipografía Elden Ring -->
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;600;700&display=swap");
+
+    :root {
+      --elden-dorado: #c9b76b;
+      --elden-esmeralda: #0f2e2e;
+      --elden-negro: #000000;
+      --elden-blanco: #ffffff;
+    }
+
+    body { 
+      background-color: var(--elden-negro);
+      color: var(--elden-blanco);
+      margin: 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      background: radial-gradient(1200px 400px at 15% -10%, rgba(201,183,107,0.08), transparent 60%),
+                  radial-gradient(800px 300px at 85% -10%, rgba(201,183,107,0.06), transparent 60%),
+                  linear-gradient(180deg, #0a0a0a 0%, #0b0b0b 45%, #000 100%);
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, .navbar-brand, .btn {
+      font-family: "Cinzel", serif;
+      letter-spacing: 0.06em;
+    }
+
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.8);
+      border-bottom: 1px solid rgba(201, 183, 107, 0.35);
+    }
+    
+    .navbar-nav .nav-link {
+      color: var(--elden-blanco) !important;
+      text-transform: uppercase;
+      font-family: "Cinzel", serif;
+    }
+
+    .title-gold {
+      color: var(--elden-dorado);
+      text-shadow: 0 0 12px rgba(201,183,107,0.18);
+    }
+
+    /* Estilo de Tarjetas de Proyecto (Adaptado de section-registro) */
+    .section-registro {
+      background: linear-gradient(180deg, rgba(15,46,46,0.85) 0%, rgba(10,20,20,0.92) 100%);
+      border: 1px solid rgba(201, 183, 107, 0.35);
+      border-radius: 18px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+      padding: 24px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .section-registro p {
+      font-size: 1.15rem;
+      line-height: 1.6;
+    }
+
+    .separator-leaf {
+      display: block;
+      margin: 40px auto;
+      max-width: 200px;
+      opacity: 0.8;
+    }
+
+    /* Botones */
+    .btn-primary {
+      background: radial-gradient(200px 80px at 50% 0%, rgba(201,183,107,0.18), transparent 70%),
+                  linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.8));
+      color: var(--elden-blanco);
+      border: 1px solid rgba(201, 183, 107, 0.65);
+      text-transform: uppercase;
+      border-radius: 14px;
+      padding: 10px 20px;
+      margin-top: auto;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 0 3px rgba(201,183,107,0.12), 0 16px 38px -18px rgba(0,0,0,0.55);
+      background-color: transparent;
+      color: var(--elden-dorado);
+    }
+    
+    .tech-stack {
+      color: #d5e6c8;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navegación -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand title-gold" href="#">Portafolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="background-color: white;">
+        <span class="navbar-toggler-icon"></span>
+      </button>                
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre Mí</a></li>
+          <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sobre Mí -->
+  <section id="sobre-mi" class="container mt-5 pt-4 text-center">
+    <h1 class="title-gold mb-4">Análisis y Ciencia de Datos</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <p class="fs-4">
+          Especializado en la extracción de valor a través de datos mediante modelos de Machine Learning, procesamiento de lenguaje natural y análisis de series de tiempo. Radicado en Puebla, con disponibilidad para roles presenciales y remotos.
+        </p>
+        <p class="tech-stack mt-3">
+          Python | R | Pandas | Matplotlib | Scikit-Learn
+        </p>
+      </div>
+    </div>
+    <img src="https://static.bandainamcoent.eu/high/elden-ring/elden-ring/00-page-setup/elden-ring-border-leaf.png" alt="separador" class="separator-leaf">
+  </section>
+
+  <!-- Proyectos -->
+  <section id="proyectos" class="container mt-2">
+    <h2 class="title-gold text-center mb-5">Proyectos Destacados</h2>
+    
+    <div class="row g-4">
+      
+      <!-- Proyecto 1 -->
+      <div class="col-md-4">
+        <div class="section-registro">
+          <h3 class="title-gold fs-4">Sistema NLP de Reglas (Tesis)</h3>
+          <p>
+            Desarrollo de un sistema prototipo para analizar dinámicas en conversaciones de WhatsApp. El algoritmo procesa texto para calcular métricas cuantitativas de estrés, niveles de interés y distorsiones cognitivas (sobregeneralización).
+          </p>
+          <a href="URL_A_TU_REPO" class="btn btn-primary mt-3">Ver Repositorio</a>
+        </div>
+      </div>
+
+      <!-- Proyecto 2 -->
+      <div class="col-md-4">
+        <div class="section-registro">
+          <h3 class="title-gold fs-4">Modelado ARIMA de Contaminación</h3>
+          <p>
+            Investigación académica desarrollada en RStudio utilizando modelos de series de tiempo y técnicas de clustering. El estudio rastrea patrones de contaminación por partículas desde Izúcar de Matamoros hacia el sur, documentando un pico crítico del 200%.
+          </p>
+          <a href="URL_A_TU_REPO" class="btn btn-primary mt-3">Ver Investigación</a>
+        </div>
+      </div>
+
+      <!-- Proyecto 3 -->
+      <div class="col-md-4">
+        <div class="section-registro">
+          <h3 class="title-gold fs-4">Perfiles de Riesgo en Redes Sociales</h3>
+          <p>
+            Coautoría de un artículo académico evaluando modelos de Machine Learning (supervisados y no supervisados) para analizar patrones de uso y perfiles de riesgo en el comportamiento de estudiantes en plataformas sociales.
+          </p>
+          <a href="URL_A_TU_REPO" class="btn btn-primary mt-3">Ver Artículo</a>
+        </div>
+      </div>
+
+    </div>
+    
+    <img src="https://static.bandainamcoent.eu/high/elden-ring/elden-ring/00-page-setup/elden-ring-border-leaf.png" alt="separador" class="separator-leaf">
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="container text-center mb-5 pb-5">
+    <h2 class="title-gold mb-4">Contacto</h2>
+    <p class="fs-5">¿Buscas un perfil analítico para tu equipo?</p>
+    <div class="mt-4">
+      <a href="URL_A_TU_LINKEDIN" class="btn btn-primary mx-2">LinkedIn</a>
+      <a href="mailto:tu-correo@email.com" class="btn btn-primary mx-2">Enviar Correo</a>
+    </div>
+  </section>
+
+  <footer style="background-color: rgba(0,0,0,0.8); border-top: 1px solid rgba(201,183,107,0.2); padding: 20px 0;">
+    <div class="container text-center" style="color: rgba(255,255,255,0.6);">
+      <small>&copy; 2026. Data Science Portfolio.</small>
+    </div>
+  </footer>
+
+</body>
+</html>

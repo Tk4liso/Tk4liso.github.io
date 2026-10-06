@@ -1,203 +1,588 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio | Data Science</title>
+  <link rel="icon" href="img/icon.png" type="image/png">
+  <title>Taisen Romero | Data Science Portfolio</title>
 
-  <!-- Dependencias de Bootstrap -->
+  <!-- Google Fonts (Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-  <!-- Tipografía Elden Ring -->
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;600;700&display=swap");
-
-    :root {
-      --elden-dorado: #c9b76b;
-      --elden-esmeralda: #0f2e2e;
-      --elden-negro: #000000;
-      --elden-blanco: #ffffff;
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fcfcfc;
+      color: #333333;
     }
 
-    body { 
-      background-color: var(--elden-negro);
-      color: var(--elden-blanco);
-      margin: 0;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      background: radial-gradient(1200px 400px at 15% -10%, rgba(201,183,107,0.08), transparent 60%),
-                  radial-gradient(800px 300px at 85% -10%, rgba(201,183,107,0.06), transparent 60%),
-                  linear-gradient(180deg, #0a0a0a 0%, #0b0b0b 45%, #000 100%);
-      min-height: 100vh;
-    }
-
-    h1, h2, h3, .navbar-brand, .btn {
-      font-family: "Cinzel", serif;
-      letter-spacing: 0.06em;
-    }
-
+    /* BARRA DE NAVEGACIÓN */
     .navbar {
-      background-color: rgba(0, 0, 0, 0.8);
-      border-bottom: 1px solid rgba(201, 183, 107, 0.35);
+      background-color: #ffffff;
+      border-bottom: 1px solid #eaeaea;
+      padding: 15px 0;
     }
-    
-    .navbar-nav .nav-link {
-      color: var(--elden-blanco) !important;
-      text-transform: uppercase;
-      font-family: "Cinzel", serif;
+    .navbar-brand {
+      font-weight: 700;
+      color: #111 !important;
+      letter-spacing: -0.5px;
+    }
+    .nav-link {
+      color: #555 !important;
+      font-weight: 400;
+      margin-left: 15px;
+      transition: color 0.2s;
+    }
+    .nav-link:hover {
+      color: #0056b3 !important;
+    }
+    .social-icons a {
+      color: #555;
+      font-size: 1.2rem;
+      margin-left: 15px;
+      transition: color 0.2s;
+    }
+    .social-icons a:hover {
+      color: #0056b3;
     }
 
-    .title-gold {
-      color: var(--elden-dorado);
-      text-shadow: 0 0 12px rgba(201,183,107,0.18);
+    /* HERO SECTION */
+    .hero-section {
+      padding: 80px 0;
+      background-color: #ffffff;
     }
-
-    /* Estilo de Tarjetas de Proyecto (Adaptado de section-registro) */
-    .section-registro {
-      background: linear-gradient(180deg, rgba(15,46,46,0.85) 0%, rgba(10,20,20,0.92) 100%);
-      border: 1px solid rgba(201, 183, 107, 0.35);
-      border-radius: 18px;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
-      padding: 24px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      position: relative;
+    .profile-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 3px solid #f0f0f0;
     }
-
-    .section-registro p {
+    .hero-title {
+      font-weight: 700;
+      font-size: 2.8rem;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+    .hero-subtitle {
+      font-weight: 400;
       font-size: 1.15rem;
+      color: #555;
       line-height: 1.6;
     }
 
-    .separator-leaf {
-      display: block;
-      margin: 40px auto;
-      max-width: 200px;
-      opacity: 0.8;
+    /* SKILL BOXES */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+    .skill-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #1a1b1e;
+      border: 1px solid #2d3139;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .skill-box i {
+      font-size: 1rem;
     }
 
-    /* Botones */
-    .btn-primary {
-      background: radial-gradient(200px 80px at 50% 0%, rgba(201,183,107,0.18), transparent 70%),
-                  linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.8));
-      color: var(--elden-blanco);
-      border: 1px solid rgba(201, 183, 107, 0.65);
-      text-transform: uppercase;
-      border-radius: 14px;
-      padding: 10px 20px;
-      margin-top: auto;
-      transition: all 0.2s ease;
+    /* WIDGET INTERACTIVO */
+    .interactive-widget {
+      background-color: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
     }
-
-    .btn-primary:hover {
-      box-shadow: 0 0 0 3px rgba(201,183,107,0.12), 0 16px 38px -18px rgba(0,0,0,0.55);
-      background-color: transparent;
-      color: var(--elden-dorado);
-    }
-    
-    .tech-stack {
-      color: #d5e6c8;
-      font-weight: 600;
+    .widget-title {
       font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #222;
+    }
+    .disclaimer-text {
+      font-size: 0.85rem;
+      color: #777;
+      margin-top: 15px;
+      line-height: 1.5;
+    }
+    .disclaimer-text a {
+      color: #0056b3;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .disclaimer-text a:hover {
+      text-decoration: underline;
+    }
+
+    /* PROJECTS & RESEARCH CARDS */
+    .section-title { font-weight: 700; font-size: 2rem; letter-spacing: -1px; margin-bottom: 30px; }
+    .subsection-title { font-weight: 600; font-size: 1.3rem; color: #444; border-bottom: 2px solid #eaeaea; padding-bottom: 10px; margin-bottom: 25px; margin-top: 50px; }
+    .project-card { border: 1px solid #eaeaea; border-radius: 10px; background-color: #ffffff; height: 100%; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; overflow: hidden; }
+    .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.06); }
+    .card-img-placeholder { height: 180px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; color: #adb5bd; font-size: 2rem; object-fit: cover; }
+    .card-body-custom { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+    .card-title-custom { font-weight: 700; font-size: 1.25rem; margin-bottom: 15px; color: #111; }
+    .card-text-custom { font-size: 0.95rem; color: #555; margin-bottom: 20px; line-height: 1.6; }
+    .tech-badges { margin-bottom: 20px; }
+    .tech-badge { display: inline-block; background-color: #f1f3f5; color: #495057; font-size: 0.8rem; font-weight: 500; padding: 4px 10px; border-radius: 4px; margin-right: 5px; margin-bottom: 5px; }
+    .card-actions { margin-top: auto; display: flex; gap: 10px; }
+    .btn-outline-custom { border: 1px solid #ced4da; color: #495057; font-size: 0.85rem; font-weight: 500; padding: 6px 12px; border-radius: 6px; transition: all 0.2s; text-decoration: none; }
+    .btn-outline-custom:hover { background-color: #f8f9fa; border-color: #adb5bd; color: #212529; }
+    .btn-primary-custom { background-color: #0056b3; color: white; border: none; font-size: 0.85rem; font-weight: 500; padding: 6px 12px; border-radius: 6px; transition: background-color 0.2s; text-decoration: none; }
+    .btn-primary-custom:hover { background-color: #004494; color: white; }
+    
+    /* GALLERY & INSIGHTS */
+    .insight-row { margin-bottom: 80px; }
+    .insight-img-wrapper { position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.08); border: 1px solid #eaeaea; }
+    .insight-img-wrapper img { width: 100%; height: auto; display: block; }
+    .insight-title { font-weight: 700; font-size: 1.5rem; color: #111; margin-bottom: 10px; }
+    .insight-meta { font-size: 0.9rem; color: #0056b3; font-weight: 600; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .insight-text { color: #555; font-size: 1.05rem; line-height: 1.7; }
+    
+    /* CV SECTION */
+    .cv-section { background-color: #fcfcfc; border-top: 1px solid #eaeaea; }
+    .cv-category { font-weight: 700; font-size: 1.5rem; color: #111; margin-bottom: 25px; border-bottom: 2px solid #eaeaea; padding-bottom: 10px; }
+    .cv-entry { margin-bottom: 30px; }
+    .cv-date { font-size: 0.95rem; font-weight: 600; color: #0056b3; text-transform: uppercase; letter-spacing: 0.5px; }
+    .cv-title { font-weight: 600; font-size: 1.15rem; color: #222; margin-bottom: 5px; }
+    .cv-institution { font-size: 1rem; color: #555; font-style: italic; margin-bottom: 10px; }
+    .cv-description { font-size: 0.95rem; color: #555; line-height: 1.6; }
+    .cv-description ul { padding-left: 20px; margin-bottom: 0; }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      background-color: #1a1b1e;
+      color: #ffffff;
+      padding: 80px 0;
+    }
+    .contact-form .form-control {
+      background-color: #2a2d34;
+      border: 1px solid #3d414a;
+      color: #ffffff;
+      border-radius: 6px;
+    }
+    .contact-form .form-control:focus {
+      background-color: #2a2d34;
+      border-color: #0056b3;
+      box-shadow: 0 0 0 0.25rem rgba(0, 86, 179, 0.25);
+      color: #ffffff;
+    }
+    .contact-form .form-label {
+      color: #adb5bd;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .contact-btn {
+      background-color: #0056b3;
+      color: white;
+      font-weight: 500;
+      padding: 12px 24px;
+      border-radius: 6px;
+      border: none;
+      transition: background-color 0.2s;
+    }
+    .contact-btn:hover {
+      background-color: #004494;
     }
   </style>
 </head>
-<body>
+<body id="home">
 
-  <!-- Navegación -->
+  <!-- NAVEGACIÓN -->
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
-      <a class="navbar-brand title-gold" href="#">Portafolio</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="background-color: white;">
+      <a class="navbar-brand" href="#home">Taisen Romero</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
-      </button>                
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre Mí</a></li>
-          <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects-research">Projects & Research</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery & Insights</a></li>
+          <li class="nav-item"><a class="nav-link" href="#cv">CV</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item social-icons ms-3 border-start ps-3">
+            <a href="https://github.com/Tk4liso" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/taisen-romero-ba%C3%B1uelos-a926b7227" target="_blank"><i class="fab fa-linkedin"></i></a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Sobre Mí -->
-  <section id="sobre-mi" class="container mt-5 pt-4 text-center">
-    <h1 class="title-gold mb-4">Análisis y Ciencia de Datos</h1>
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <p class="fs-4">
-          Especializado en la extracción de valor a través de datos mediante modelos de Machine Learning, procesamiento de lenguaje natural y análisis de series de tiempo. Radicado en Puebla, con disponibilidad para roles presenciales y remotos.
-        </p>
-        <p class="tech-stack mt-3">
-          Python | R | Pandas | Matplotlib | Scikit-Learn
-        </p>
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <img src="img/IMG_0752_square.jpg" alt="Profile photo" class="profile-photo">
+          <h1 class="hero-title">Taisen Romero B.</h1>
+          <p class="hero-subtitle">
+            Computer Science graduate with honors (<strong>GPA 9.4/10</strong>). Co-author of a peer-reviewed Springer publication and creator of advanced rule-based NLP systems. Proven ability to build research-grade analytical architectures reaching up to <strong>95% test accuracy</strong> in R and Python.
+          </p>
+          <div class="skills-container">
+            <div class="skill-box"><i class="fas fa-terminal"></i> Data Science</div>
+            <div class="skill-box"><i class="fas fa-sparkles"></i> Machine Learning</div>
+            <div class="skill-box"><i class="fas fa-language"></i> NLP</div>
+            <div class="skill-box"><i class="fas fa-chart-line"></i> Time Series</div>
+          </div>
+        </div>
+
+        <div class="col-lg-5 offset-lg-1">
+          <div class="interactive-widget">
+            <div class="widget-title"><i class="fas fa-robot text-primary me-2"></i> NLP Live Demo: Message Analysis</div>
+            <textarea id="demo-input" class="form-control mb-3" rows="3" placeholder="Write a message here to analyze interest level (e.g. “I think that's a great idea!”)"></textarea>
+            <button class="btn btn-primary w-100 mb-3" onclick="analyzeText()">Analyze</button>
+            <div>
+              <small class="fw-bold">Interest Level:</small>
+              <div class="progress mt-1 mb-2" style="height: 20px;">
+                <div id="interest-bar" class="progress-bar bg-primary" role="progressbar" style="width: 0%;">0%</div>
+              </div>
+            </div>
+            <div class="disclaimer-text">
+              <i class="fas fa-info-circle"></i> <strong>Privacy notice:</strong> This widget uses a simplified user interface heuristic that runs locally. The actual system (which uses fuzzy logic to calculate stress and cognitive distortions) is proprietary. <br>
+              <a href="#tesis-card">Read about the complete rule-based system here.</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <img src="https://static.bandainamcoent.eu/high/elden-ring/elden-ring/00-page-setup/elden-ring-border-leaf.png" alt="separador" class="separator-leaf">
   </section>
 
-  <!-- Proyectos -->
-  <section id="proyectos" class="container mt-2">
-    <h2 class="title-gold text-center mb-5">Proyectos Destacados</h2>
-    
-    <div class="row g-4">
+  <!-- PROJECTS & RESEARCH SECTION -->
+  <section id="projects-research" class="py-5 bg-light">
+    <div class="container py-4">
+      <h2 class="section-title">Projects & Research</h2>
       
-      <!-- Proyecto 1 -->
-      <div class="col-md-4">
-        <div class="section-registro">
-          <h3 class="title-gold fs-4">Sistema NLP de Reglas (Tesis)</h3>
-          <p>
-            Desarrollo de un sistema prototipo para analizar dinámicas en conversaciones de WhatsApp. El algoritmo procesa texto para calcular métricas cuantitativas de estrés, niveles de interés y distorsiones cognitivas (sobregeneralización).
-          </p>
-          <a href="URL_A_TU_REPO" class="btn btn-primary mt-3">Ver Repositorio</a>
+      <h3 class="subsection-title">Academic Research</h3>
+      <div class="row g-4">
+        
+        <!-- Thesis Project -->
+        <div class="col-md-4" id="tesis-card">
+          <div class="project-card">
+            <img src="img/3.10 Escenario 3 - Serie de tiempo Tendencia local stress_score.png" class="card-img-placeholder" alt="NLP System Architecture">
+            <div class="card-body-custom">
+              <h4 class="card-title-custom">NLP Rule-Based System for Chat Analysis</h4>
+              <p class="card-text-custom">Designed a fuzzy-logic inference system to convert WhatsApp exports into behavioral metrics. Evaluated against a survey dataset of <strong>251 participants</strong> and <strong>753 messages</strong>, finding slight correlations with anxiety indicators.</p>
+              <div class="tech-badges">
+                <span class="tech-badge">R</span>
+                <span class="tech-badge">NLP</span>
+                <span class="tech-badge">Fuzzy Logic</span>
+              </div>
+              <div class="card-actions">
+                <a href="#gallery-nlp" class="btn-primary-custom">View more</a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Proyecto 2 -->
-      <div class="col-md-4">
-        <div class="section-registro">
-          <h3 class="title-gold fs-4">Modelado ARIMA de Contaminación</h3>
-          <p>
-            Investigación académica desarrollada en RStudio utilizando modelos de series de tiempo y técnicas de clustering. El estudio rastrea patrones de contaminación por partículas desde Izúcar de Matamoros hacia el sur, documentando un pico crítico del 200%.
-          </p>
-          <a href="URL_A_TU_REPO" class="btn btn-primary mt-3">Ver Investigación</a>
+        <!-- Social Media Classification -->
+        <div class="col-md-4">
+          <div class="project-card">
+            <img src="img/boxplot_social_media.png" class="card-img-placeholder" alt="Social Media Risk Profiling">
+            <div class="card-body-custom">
+              <h4 class="card-title-custom">Social Media Addiction Risk Profiling</h4>
+              <p class="card-text-custom">Built and evaluated supervised (CART) and unsupervised (K-means, PAM) machine learning models to classify behavioral risk profiles, achieving <strong>95% test accuracy</strong> and a <strong>Kappa of 0.93</strong>.</p>
+              <div class="tech-badges">
+                <span class="tech-badge">R (Caret)</span>
+                <span class="tech-badge">PCA</span>
+                <span class="tech-badge">Clustering</span>
+              </div>
+              <div class="card-actions">
+                <a href="#gallery-clusters" class="btn-primary-custom">View more</a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Proyecto 3 -->
-      <div class="col-md-4">
-        <div class="section-registro">
-          <h3 class="title-gold fs-4">Perfiles de Riesgo en Redes Sociales</h3>
-          <p>
-            Coautoría de un artículo académico evaluando modelos de Machine Learning (supervisados y no supervisados) para analizar patrones de uso y perfiles de riesgo en el comportamiento de estudiantes en plataformas sociales.
-          </p>
-          <a href="URL_A_TU_REPO" class="btn btn-primary mt-3">Ver Artículo</a>
+        <!-- Air Quality Research -->
+        <div class="col-md-4">
+          <div class="project-card">
+            <img src="img/ejecución_shiny_2.png" class="card-img-placeholder" alt="ARIMA Time Series Forecasting">
+            <div class="card-body-custom">
+              <h4 class="card-title-custom">PM Air Quality Time Series Forecasting</h4>
+              <p class="card-text-custom">Analyzed 4 years of historical data using ARIMA and TBATS models. Built an interactive <strong>Shiny web app</strong> to communicate predictions to non-technical stakeholders. Published in Springer.</p>
+              <div class="tech-badges">
+                <span class="tech-badge">RStudio</span>
+                <span class="tech-badge">ARIMA / TBATS</span>
+                <span class="tech-badge">Shiny</span>
+              </div>
+              <div class="card-actions">
+                <a href="#gallery-arima" class="btn-primary-custom">View Plots</a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
+      </div>
+      
+      <!-- Applied Projects Sub-section -->
+      <h3 class="subsection-title">Applied Projects & Software</h3>
+      <div class="row g-4">
+        
+        <!-- AI Photo Restoration Web App -->
+        <div class="col-md-4">
+          <div class="project-card">
+            <img src="img/photo_enhancer.png" class="card-img-placeholder" alt="AI Photo Restoration">
+            <div class="card-body-custom">
+              <h4 class="card-title-custom">AI-Based Photo Restoration Web App</h4>
+              <p class="card-text-custom">Deployed an interactive web application that restores damaged real-world photographs using pretrained deep learning models (GFPGAN, Real-ESRGAN). Built a custom model-caching layer to significantly <strong>cut inference time</strong>.</p>
+              <div class="tech-badges">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">PyTorch</span>
+                <span class="tech-badge">Streamlit</span>
+              </div>
+              <div class="card-actions">
+                <a href="https://github.com/Tk4liso/my-photo-enhancer" class="btn-outline-custom"><i class="fab fa-github"></i> View App Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRON NEHO Simulation -->
+        <div class="col-md-4">
+          <div class="project-card">
+            <img src="img/hist_perfil_C_mexico.png" class="card-img-placeholder" alt="Multi-Agent Simulation">
+            <div class="card-body-custom">
+              <h4 class="card-title-custom">TRON NEHO: Agent-Based Simulation</h4>
+              <p class="card-text-custom">Engineered a multi-agent simulation modeling 20+ psychological traits through a Takagi-Sugeno fuzzy-logic engine. Leveraged a multi-objective genetic algorithm (<strong>NSGA-II</strong>) to evolve synthetic profiles.</p>
+              <div class="tech-badges">
+                <span class="tech-badge">R</span>
+                <span class="tech-badge">Genetic Algorithms</span>
+                <span class="tech-badge">Agent Modeling</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Datathon Chatbot -->
+        <div class="col-md-4">
+          <div class="project-card">
+            <img src="img/chatbot.png" class="card-img-placeholder" alt="Llama Chatbot">
+            <div class="card-body-custom">
+              <h4 class="card-title-custom">Environmental QA Llama Chatbot</h4>
+              <p class="card-text-custom">Developed during Datathon Puebla. Analyzed urban air quality data and integrated a <strong>Llama language model</strong> to construct a chatbot capable of answering user questions about environmental metrics in plain language.</p>
+              <div class="tech-badges">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">LLMs (Llama)</span>
+                <span class="tech-badge">NLP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
-    
-    <img src="https://static.bandainamcoent.eu/high/elden-ring/elden-ring/00-page-setup/elden-ring-border-leaf.png" alt="separador" class="separator-leaf">
   </section>
 
-  <!-- Contacto -->
-  <section id="contacto" class="container text-center mb-5 pb-5">
-    <h2 class="title-gold mb-4">Contacto</h2>
-    <p class="fs-5">¿Buscas un perfil analítico para tu equipo?</p>
-    <div class="mt-4">
-      <a href="www.linkedin.com/in/taisen-romero-bañuelos-a926b7227" class="btn btn-primary mx-2">LinkedIn</a>
-      <a href="https://github.com/Tk4liso" class="btn btn-primary mx-2">GitHub</a>
-      <a href="mailto:bambino.prr@gmail.com" class="btn btn-primary mx-2">Enviar Correo</a>
+  <!-- GALLERY & INSIGHTS SECTION -->
+  <section id="gallery" class="py-5 bg-white">
+    <div class="container py-5">
+      <h2 class="section-title text-center mb-2">Gallery & Insights</h2>
+      <p class="text-center text-muted mb-5 pb-4">Visualizing data patterns and system architectures to drive real-world decisions.</p>
+      
+      <!-- Insight 1: ARIMA -->
+      <div class="row align-items-center insight-row" id="gallery-arima">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="insight-img-wrapper">
+            <img src="img/ejecución_shiny_1.png" alt="ARIMA 200% PM Pollution Spike Plot">
+          </div>
+        </div>
+        <div class="col-lg-5 offset-lg-1">
+          <div class="insight-meta"><i class="fas fa-chart-area me-2"></i>Time Series Forecasting</div>
+          <h3 class="insight-title">Tracking the 200% PM Pollution Spike</h3>
+          <p class="insight-text">A rigid spreadsheet doesn't inspire urban planning changes. By applying ARIMA modeling to historical data, I mapped the trajectory of airborne particulate matter, visualizing a critical 200% pollution spike. To maximize impact, I deployed these findings as an interactive <strong>Shiny app</strong>, empowering non-technical stakeholders to explore the data dynamically.</p>
+        </div>
+      </div>
+
+      <!-- Insight 2: NLP Matrix -->
+      <div class="row align-items-center insight-row flex-lg-row-reverse" id="gallery-nlp">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="insight-img-wrapper">
+            <img src="img/6.1 Anexos - Matriz de interés y estrés por conv y autor.png" alt="Behavioral Matrix for NLP Analysis">
+          </div>
+        </div>
+        <div class="col-lg-5 me-auto">
+          <div class="insight-meta"><i class="fas fa-border-all me-2"></i>Behavioral NLP Metrics</div>
+          <h3 class="insight-title">Mapping Conversational Dynamics</h3>
+          <p class="insight-text">Standard if/else heuristics often struggle with the ambiguity of human conversation. Instead of rigid rules, my thesis utilized a Mamdani-type fuzzy logic layer to calculate behavioral metrics. This 2D matrix visualizes some of the results, plotting the average stress versus behavioral interest of two users in a WhatsApp conversation, demonstrating how the system quantifies abstract communicative patterns.</p>
+        </div>
+      </div>
+      
+      <!-- Insight 3: Social Media Clusters -->
+      <div class="row align-items-center insight-row" id="gallery-clusters">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="insight-img-wrapper">
+            <img src="img/PCA clustering x-adicted_score y_hours_sleep.png" alt="PCA Clustering Scatter Plot">
+          </div>
+        </div>
+        <div class="col-lg-5 offset-lg-1">
+          <div class="insight-meta"><i class="fas fa-brain me-2"></i>Unsupervised Learning</div>
+          <h3 class="insight-title">Dimensionality Reduction & Risk Profiling</h3>
+          <p class="insight-text">In machine learning, raw predictive power isn't enough; interpretability is key. I utilized PCA to simplify behavioral survey data before executing K-means and PAM clustering to identify distinct user segments. This segmentation directly informed our CART decision trees, achieving a strict <strong>Kappa agreement metric of 0.93</strong>.<br><br>You can read the full paper in my <a href="https://www.linkedin.com/in/taisen-romero-ba%C3%B1uelos-a926b7227" target="_blank" style="font-weight: 600; color: #0056b3; text-decoration: none;">LinkedIn profile!</a></p>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <footer style="background-color: rgba(0,0,0,0.8); border-top: 1px solid rgba(201,183,107,0.2); padding: 20px 0;">
-    <div class="container text-center" style="color: rgba(255,255,255,0.6);">
-      <small>&copy; 2026. Data Science Portfolio.</small>
-    </div>
-  </footer>
+  <!-- CV SECTION -->
+  <section id="cv" class="py-5 cv-section">
+    <div class="container py-4">
+      <h2 class="section-title text-center mb-5">Curriculum Vitae</h2>
+      
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
 
+          <!-- Publications -->
+          <h3 class="cv-category mt-5">Publications</h3>
+          <div class="row cv-entry">
+            <div class="col-md-3">
+              <div class="cv-date">2025</div>
+            </div>
+            <div class="col-md-9">
+              <div class="cv-title">A Study for Air Quality Analysis in the City of Puebla</div>
+              <div class="cv-institution">Springer, 17th Mexican Congress, Mexico City, Mexico, May 12–16, 2025, Proceedings, Part II</div>
+              <div class="cv-description">
+                Co-authored peer-reviewed paper presented at the Artificial Intelligence – COMIA 2025 congress. <br>
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-97910-1_17" target="_blank" style="color: #0056b3; font-weight: 500;">DOI: 10.1007/978-3-031-97910-1_17</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience & Research -->
+          <h3 class="cv-category mt-5">Experience & Research</h3>
+          
+          <div class="row cv-entry">
+            <div class="col-md-3">
+              <div class="cv-date">May 2024 – 2025</div>
+            </div>
+            <div class="col-md-9">
+              <div class="cv-title">Air Quality Research Assistant</div>
+              <div class="cv-institution">Data Analyst Intern, BUAP</div>
+              <div class="cv-description">
+                <ul>
+                  <li>Analyzed 4 years of historical air-quality monitoring data for the city of Puebla, building <strong>ARIMA</strong> and <strong>TBATS</strong> forecasting models.</li>
+                  <li>Developed an interactive <strong>Shiny web app</strong> to visualize results for non-technical stakeholders, supporting data-driven urban planning.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="row cv-entry">
+            <div class="col-md-3">
+              <div class="cv-date">2026 (Ongoing)</div>
+            </div>
+            <div class="col-md-9">
+              <div class="cv-title">Educational Data Science Program Proposal</div>
+              <div class="cv-institution">CECSUR & Southern Puebla High Schools</div>
+              <div class="cv-description">
+                <ul>
+                  <li>Developing an applied, project-based data science program as a direct continuation of my published COMIA air-quality research.</li>
+                  <li>Currently in the proposal phase to be implemented across high schools in southern Puebla, using real sensor and SINAICA data, as well as accessible Python (Pandas) notebooks.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Education -->
+          <h3 class="cv-category mt-5">Education</h3>
+          <div class="row cv-entry">
+            <div class="col-md-3">
+              <div class="cv-date">2020 – 2026</div>
+            </div>
+            <div class="col-md-9">
+              <div class="cv-title">B.S. in Computer Science</div>
+              <div class="cv-institution">Benemérita Universidad Autónoma de Puebla (BUAP)</div>
+              <div class="cv-description">
+                <ul>
+                  <li>Graduated with honors (Mención Honorífica). <strong>GPA: 9.4/10</strong>.</li>
+                  <li>Thesis: "Using NLP for the Analysis of Private WhatsApp Conversations in Psychotherapeutic Assessment."</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mb-5">
+          <h2 style="font-weight: 700; letter-spacing: -1px;">Let's Connect</h2>
+          <p style="font-size: 1.1rem; color: #adb5bd;">
+            Looking for a data-driven profile for your team? Send me a message and I'll get back to you shortly.
+          </p>
+        </div>
+      </div>
+      
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <form action="https://formspree.io/f/mwlparkl" method="POST" class="contact-form">
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <input type="text" class="form-control" name="name" id="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Your Email Address</label>
+              <input type="email" class="form-control" name="_replyto" id="email" required>
+            </div>
+            <div class="mb-4">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" name="message" id="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="contact-btn w-100">
+              <i class="fas fa-paper-plane me-2"></i> Send Message
+            </button>
+          </form>
+          
+          <div class="text-center mt-4">
+            <a href="https://www.linkedin.com/in/taisen-romero-ba%C3%B1uelos-a926b7227" target="_blank" class="text-white text-decoration-none">
+              <i class="fab fa-linkedin fs-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function analyzeText() {
+      const text = document.getElementById('demo-input').value.trim();
+      let score = 0;
+      if (text.length > 0) {
+        score += Math.min((text.length / 50) * 50, 50);
+        if (text.includes('?')) score += 30;
+        const lowerText = text.toLowerCase();
+        if (lowerText.includes('hello') || lowerText.includes('hey') || lowerText.includes('great') || lowerText.includes('excellent')) score += 20;
+      }
+      score = Math.min(Math.round(score), 100);
+      const bar = document.getElementById('interest-bar');
+      bar.style.width = score + '%';
+      bar.innerText = score + '%';
+      bar.setAttribute('aria-valuenow', score);
+    }
+  </script>
 </body>
 </html>
